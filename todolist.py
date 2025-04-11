@@ -63,7 +63,7 @@ class Todo:
         if task in self.tasks:
             self.completed.append(task)
             self.tasks.remove(task)
-            print(f"Task '{task} successfully marked completed.")
+            print(f"Task '{task}' successfully marked completed.")
         else:
             print(f"Task '{task}' not found.")
 
@@ -108,20 +108,27 @@ def main():
     while True:
         print("\nOptions:")
         print("1. Add Task")
-        print("2. Delete Task")
-        print("3. Show Tasks")
-        print("4. Quit")
-        choice = input("Choose an option (1-4): ")
+        print("2. Mark Task Completed")
+        print("3. Delete Task")
+        print("4. Show Tasks")
+        print("5. Show Completed Tasks")
+        print("6. Quit")
+        choice = input("Choose an option (1-6): ")
 
         if choice == "1":
             task = input("Enter the task: ")
             todo.add_task(task)
         elif choice == "2":
+            task = input("Enter the task: ")
+            todo.complete_task(task)
+        elif choice == "3":
             task = input("Enter the task to delete: ")
             todo.delete_task(task)
-        elif choice == "3":
-            todo.show_tasks()
         elif choice == "4":
+            todo.show_tasks()
+        elif choice == "5":
+            todo.show_completed()
+        elif choice == "6":
             print("Exiting the application.")
             break
         else:
