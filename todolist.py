@@ -16,6 +16,7 @@ class Todo:
     def __init__(self) -> None:
         """Initialize a new Todo instance with an empty task list."""
         self.tasks: List[str] = []
+        self.completed: List[str] = []
 
     def add_task(self, task: str) -> None:
         """Add a new task to the list.
@@ -49,6 +50,23 @@ class Todo:
         else:
             print(f"Task '{task}' not found.")
 
+    def complete_task(self, task:str) -> None:
+        """Complete a task from the list.
+
+        Args:
+            task: The task descripton to complete.
+
+        Note:
+            Prints a success message if the task is designated
+            completed, or an error message if the task is not found.
+        """
+        if task in self.tasks:
+            self.completed.append(task)
+            self.tasks.remove(task)
+            print(f"Task '{task} successfully marked completed.")
+        else:
+            print(f"Task '{task}' not found.")
+
     def show_tasks(self) -> None:
         """Display all current tasks in a numbered list.
 
@@ -63,6 +81,20 @@ class Todo:
             for i, task in enumerate(self.tasks, start=1):
                 print(f"{i}. {task}")
 
+    def show_completed(self) -> None:
+        """Display all completed tasks in a numbered list.
+
+        Note:
+            Prints a message if there are no tasks,
+            or a numbered list of all completed tasks if any
+            exist.
+        """
+        if not self.completed:
+            print("No tasks completed.")
+        else:
+            print("Completed Tasks:")
+            for i, task in enumerate(self.completed, start=1):
+                print(f"{i}. {task}")
 
 def main():
     """Run the interactive To-Do list application.
