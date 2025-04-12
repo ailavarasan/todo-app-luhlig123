@@ -54,7 +54,7 @@ class Todo:
         """Complete a task from the list.
 
         Args:
-            task: The task descripton to complete.
+            task: The task descripton to mark completed.
 
         Note:
             Prints a success message if the task is designated
@@ -96,6 +96,18 @@ class Todo:
             for i, task in enumerate(self.completed, start=1):
                 print(f"{i}. {task}")
 
+    def num_tasks(self) -> None:
+        """Display the number of all active tasks.
+
+        Note:
+            Prints the number of tasks if there are any,
+            or a message if there are none.
+        """
+        if not self.tasks:
+            print("You have zero active tasks.")
+        else:
+            print(f"You have {len(self.tasks)} tasks.")
+
 def main():
     """Run the interactive To-Do list application.
 
@@ -112,8 +124,9 @@ def main():
         print("3. Delete Task")
         print("4. Show Tasks")
         print("5. Show Completed Tasks")
-        print("6. Quit")
-        choice = input("Choose an option (1-6): ")
+        print("6. Show Number of Tasks")
+        print("7. Quit")
+        choice = input("Choose an option (1-7): ")
 
         if choice == "1":
             task = input("Enter the task: ")
@@ -129,6 +142,8 @@ def main():
         elif choice == "5":
             todo.show_completed()
         elif choice == "6":
+            todo.num_tasks()
+        elif choice == "7":
             print("Exiting the application.")
             break
         else:
